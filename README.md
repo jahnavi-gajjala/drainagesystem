@@ -46,7 +46,7 @@ The main goal of this project is to improve public sanitation management by crea
 
 ## 👩‍💻 Developed By
 
-**Jahnavi and Nanditha**
+**Jahnavi,Nanditha,Sravani,Charmi,Harshitha**
 
 ---
 
