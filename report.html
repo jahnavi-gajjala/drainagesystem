@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<!-- Defines the document type as HTML5 -->
+<html lang="en">
+  <head>
+    <!-- Sets character encoding to UTF-8 -->
+    <meta charset="UTF-8" />
+    <!-- Ensures proper rendering and touch zooming on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Register - MedLink</title>
+
+    <!-- Internal CSS styling starts -->
+    <style>
+      /* Resets box-sizing to border-box for all elements */
+      * {
+        box-sizing: border-box;
+      }
+
+      /* Body styling */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f4f4f4;
+      }
+
+      /* Header bar styling */
+      header {
+        background: #0288d1;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      /* Navigation bar styles */
+      nav {
+        background: #0277bd;
+        padding: 0.5rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      /* Nav link styles */
+      nav a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+      }
+
+      /* Nav link hover effect */
+      nav a:hover {
+        background: #01579b;
+        border-radius: 5px;
+      }
+
+      /* Container styling for the form */
+      .container {
+        padding: 2rem;
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        margin-top: 1rem;
+      }
+
+      /* Utility class to hide elements */
+      .hidden {
+        display: none;
+      }
+
+      /* Form layout styles */
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      /* Styles for input, select, textarea */
+      input,
+      select,
+      textarea {
+        padding: 10px;
+        width: 100%;
+      }
+
+      /* Button styling */
+      button {
+        padding: 10px;
+        background: #0288d1;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      /* Button hover effect */
+      button:hover {
+        background: #0277bd;
+      }
+
+      /* Styling for complaint cards */
+      .complaint-card {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+      }
+
+      /* Styling images inside complaint cards */
+      .complaint-card img {
+        width: 100%;
+        border-radius: 5px;
+        margin-top: 0.5rem;
+      }
+
+      /* Story image styling */
+      .story img {
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      /* Error message style */
+      .error-msg {
+        color: red;
+        margin-top: -12px;
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+
+      /* Label styling */
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      /* Input and select styling for specific input types */
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      select {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 16px;
+        margin-bottom: 18px;
+        box-sizing: border-box;
+      }
+
+      /* Focus effect for form fields */
+      input:focus,
+      select:focus {
+        border-color: #2a7a3b;
+        outline: none;
+      }
+
+      /* Active link styling */
+      a.active {
+        background-color: grey;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header section -->
+    <header>
+      <h1>Drainage System Revitalization Portal</h1>
+    </header>
+
+    <!-- Navigation links -->
+    <nav>
+      <a href="home.html">Home</a>
+      <!-- Commented out links for optional pages -->
+      <!-- <a href="registercitizen.html">Register</a>
+      <a href="report.html">Report</a> -->
+      <a href="stories.html">Stories</a>
+      <a href="policy.html">Policy</a>
+      <a href="contact.html">Contact</a>
+      <a href="sanitationteam.php">Sanitation</a>
+    </nav>
+
+    <!-- Main content container -->
+    <div class="container">
+      <h2>Submit A Complaint</h2>
+
+      <!-- Issue selection -->
+      <label for="issue">Select Issue:</label>
+      <select id="role" name="role">
+        <option value="select">Select issue</option>
+        <option value="Drainage Problem">Drainage Problem</option>
+        <option value="Sanitation Problem">Sanitation Problem</option>
+        <option value="Other">Other</option>
+      </select>
+      <span class="error-msg" id="role_error"></span>
+
+      <!-- Problem description textarea -->
+      <label for="name">Describe The Problem</label>
+      <textarea id="name" name="storyContent" placeholder="Write your story here..." required></textarea>
+      <span class="error-msg" id="name_error"></span>
+
+      <!-- Area selection -->
+      <label for="issue">Select Area</label>
+      <select id="role1" name="role1">
+        <option value="select">Select </option>
+        <option value="Marripalem">Marripalem</option>
+        <option value="Gajuwaka">Gajuwaka</option>
+        <option value="Dwarka Nagar">Dwarka Nagar</option>
+        <option value="Seethamdhara">Seethamdhara</option>
+        <option value="HB Colony">HB Colony</option>
+      </select>
+      <span class="error-msg" id="role1_error"></span>
+
+      <!-- File upload input -->
+      <label for="photo">Upload Photo:</label>
+      <input type="file" id="photo" name="photo" accept="image/*" />
+      <span class="error-msg" id="photo_error"></span><br>
+
+      <!-- Submit button -->
+      <button type="button" onclick="SubmitForm()">Submit A Complaint</button>
+    </div>
+
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- JavaScript/jQuery logic for validation and AJAX -->
+    <script>
+      // Run when the page is fully loaded
+      $(document).ready(function () {
+        // Clear error when user changes/selects values
+        $('#role').on('change', function () {
+          $('#role_error').text('');
+        });
+
+        $('#role1').on('change', function () {
+          $('#role1_error').text('');
+        });
+
+        $('#name').on('input', function () {
+          $('#name_error').text('');
+        });
+
+        $('#photo').on('input', function () {
+          $('#photo_error').text('');
+        });
+      });
+
+      // Function to validate form and send AJAX request
+      function SubmitForm() {
+        let role = $('#role').val(); // Selected issue
+        let role1 = $('#role1').val(); // Selected area
+        let name = $('#name').val(); // Description
+        let fileInput = $('#photo')[0].files[0]; // File input
+        let valid = true;
+
+        // Validate issue selection
+        if (role === 'select') {
+          $('#role_error').text(' Fill the field');
+          valid = false;
+        } else {
+          $('#role_error').text('');
+        }
+
+        // Validate area selection
+        if (role1 === 'select') {
+          $('#role1_error').text(' Fill the field');
+          valid = false;
+        } else {
+          $('#role1_error').text('');
+        }
+
+        // Validate description
+        if (name === '') {
+          $('#name_error').text(' Fill the field');
+          valid = false;
+        } else {
+          $('#name_error').text('');
+        }
+
+        // Validate photo upload
+        if (!fileInput) {
+          $('#photo_error').text(' Fill the field');
+          valid = false;
+        } else {
+          $('#photo_error').text('');
+        }
+
+        // If all inputs are valid, submit via AJAX
+        if (valid) {
+          let formData = new FormData(); // Create FormData object
+          formData.append('issue', role);
+          formData.append('area', role1);
+          formData.append('description', name);
+          formData.append('photo', fileInput);
+
+          // Send data to the backend via AJAX POST
+          $.ajax({
+            url: "http://localhost/csp/csp/report.php", // Backend PHP script
+            type: "POST",
+            data: formData,
+            contentType: false, // Prevent jQuery from setting content type
+            processData: false, // Prevent jQuery from processing data
+            success: function (response) {
+              console.log(response); // Debug log
+              if (response.trim() === "success") {
+                alert('Your complaint is successfully registered');
+                location.reload(); // Reload page on success
+              } else {
+                alert('Error: ' + response); // Show error message
+              }
+            },
+            error: function (xhr, status, error) {
+              console.log("AJAX Error:", error); // Log AJAX error
+            }
+          });
+        }
+      }
+    </script>
+  </body>
+</html>

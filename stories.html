@@ -1,0 +1,262 @@
+<!DOCTYPE html> <!-- Declares that this is an HTML5 document -->
+<html lang="en"> <!-- Opens the HTML document and sets language to English -->
+  <head>
+    <meta charset="UTF-8" /> <!-- Character encoding set to UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Makes the page responsive on mobile -->
+    <title>Register - MedLink</title> <!-- Title of the web page shown in the browser tab -->
+
+    <style>
+      /* ========== GLOBAL STYLES ========== */
+      * {
+        box-sizing: border-box; /* Ensures padding & borders are included in total element size */
+      }
+
+      body {
+        font-family: Arial, sans-serif; /* Sets a clean, sans-serif font */
+        margin: 0; /* Removes default margin */
+        background: #f4f4f4; /* Light gray background */
+      }
+
+      /* ========== HEADER ========== */
+      header {
+        background: #0288d1; /* Blue background */
+        color: white;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      /* ========== NAVIGATION BAR ========== */
+      nav {
+        background: #0277bd;
+        padding: 0.5rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem; /* Space between nav links */
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+      }
+
+      nav a:hover {
+        background: #01579b;
+        border-radius: 5px;
+      }
+
+      nav a.active {
+        background-color: grey; /* Active tab gets a grey background */
+      }
+
+      /* ========== CONTAINER FOR CONTENT ========== */
+      .container {
+        padding: 2rem;
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        margin-top: 1rem;
+      }
+
+      /* ========== FORM ELEMENT STYLES ========== */
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      input,
+      select,
+      textarea {
+        padding: 10px;
+        width: 100%;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      select {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 16px;
+        margin-bottom: 18px;
+        box-sizing: border-box;
+      }
+
+      input:focus,
+      select:focus {
+        border-color: #2a7a3b;
+        outline: none;
+      }
+
+      /* ========== BUTTON ========== */
+      button {
+        padding: 10px;
+        background: #0288d1;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      button:hover {
+        background: #0277bd;
+      }
+
+      /* ========== COMPLAINT CARD STYLING ========== */
+      .complaint-card {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+      }
+
+      .complaint-card img {
+        width: 100%;
+        border-radius: 5px;
+        margin-top: 0.5rem;
+      }
+
+      .story img {
+        width: auto;
+        border-radius: 8px;
+        height: 200px;
+        object-fit: contain; /* Image will scale nicely without distortion */
+      }
+
+      /* Error message text */
+      .error-msg {
+        color: red;
+        margin-top: -12px;
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      /* ========== STORIES SECTION ========== */
+      .stories-container {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 1rem;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        color: #333;
+      }
+
+      .story-card {
+        display: flex;
+        gap: 1.5rem;
+        background: white;
+        border-radius: 10px;
+        padding: 1.2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        align-items: flex-start;
+        transition: transform 0.3s ease;
+      }
+
+      .story-card:hover {
+        transform: scale(1.01); /* Slight zoom on hover */
+      }
+
+      .story-card img {
+        width: 180px;
+        height: auto;
+        border-radius: 10px;
+        object-fit: cover; /* Ensures the image fits well */
+      }
+
+      .story-content h2 {
+        margin: 0 0 0.5rem;
+        font-size: 1.3rem;
+        color: #0288d1;
+      }
+
+      .story-content p {
+        margin: 0;
+        color: #555;
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      /* Responsive design for smaller screens */
+      @media (max-width: 768px) {
+        .story-card {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .story-card img {
+          width: 100%;
+          max-width: 100%;
+        }
+
+        .story-content {
+          margin-top: 1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ========== HEADER ========== -->
+    <header>
+      <h1>Drainage System Revitalization Portal</h1>
+    </header>
+  
+    <!-- ========== NAVIGATION BAR ========== -->
+    <nav>
+      <a href="home.html">Home</a>
+      <!-- <a href="registercitizen.html">Register</a>
+      <a href="report.html">Report</a> -->
+      <a href="stories.html" class="active">Stories</a>
+      <a href="policy.html">Policy</a>
+      <a href="contact.html">Contact</a>
+      <a href="sanitationteam.php">Sanitation</a>
+    </nav>
+
+    <!-- ========== STORIES SECTION ========== -->
+    <div class="stories-container">
+      
+      <!-- ========== STORY 1 ========== -->
+      <div class="story-card">
+        <img src="drainage.jpeg" alt="Drainage Fixed in Marripalem" />
+        <div class="story-content">
+          <h2>Marripalem Drainage Fixed</h2>
+          <p>
+          The Marripalem area, a bustling residential zone in the heart of the city, had long been troubled by severe drainage issues. Residents often voiced concerns about the unhygienic conditions, stagnant water, and the unbearable smell that lingered across the streets, especially during the monsoon. For years, overflowing drains had not only inconvenienced locals but also raised serious health concerns due to the breeding of mosquitoes and the increased risk of waterborne diseases.
+
+Complaints had been pouring into municipal offices for months, but until recently, no significant action had been taken. However, following a wave of complaints and awareness raised through social media and local campaigns, the Greater Visakhapatnam Municipal Corporation (GVMC) finally took note.
+
+A dedicated sanitation and civil engineering team was dispatched to assess the ground situation. Upon investigation, they discovered multiple blockages in underground drainage lines caused by years of accumulated debris, construction waste, and improperly disposed garbage. In response, the municipal team quickly mobilized desilting machines and deployed sanitation workers to clean and flush out the drains.
+          </p>
+        </div>
+      </div>
+
+      <!-- ========== STORY 2 ========== -->
+      <div class="story-card">
+        <img src="dust.jpeg" alt="Sanitation in Gajuwaka" />
+        <div class="story-content">
+          <h2>Sanitation Improved in Gajuwaka</h2>
+          <p>
+            Gajuwaka, one of the busiest and most densely populated regions in Visakhapatnam, has recently witnessed a major improvement in its sanitation system. For years, residents of various colonies in the area had been troubled by overflowing manholes, stagnant sewage, and frequent drainage blockages, especially during the rainy season. These issues had caused not only inconvenience but also raised serious health concerns.
+          </p>
+        </div>
+      </div>
+
+    </div> <!-- End of stories-container -->
+
+  </body>
+</html>

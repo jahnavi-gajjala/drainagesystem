@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Root HTML tag with language set to English -->
+  <head>
+    <meta charset="UTF-8" /> <!-- Character encoding set to UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Ensures responsive design on mobile devices -->
+    <title>Register - MedLink</title> <!-- Page title shown in the browser tab -->
+    
+    <style>
+      /* ======= Global Reset Styles ======= */
+      * {
+        box-sizing: border-box; /* Includes padding and border in element's total width and height */
+      }
+
+      body {
+        font-family: Arial, sans-serif; /* Sets a clean font */
+        margin: 0; /* Removes default browser margin */
+        background: #f4f4f4; /* Light gray background */
+      }
+
+      /* ======= Header ======= */
+      header {
+        background: #0288d1; /* Blue background color */
+        color: white; /* White text */
+        padding: 1rem; /* Space inside the header */
+        text-align: center; /* Center-align the title */
+      }
+
+      /* ======= Navigation Bar ======= */
+      nav {
+        background: #0277bd; /* Slightly darker blue */
+        padding: 0.5rem; /* Space inside nav */
+        display: flex; /* Layout links horizontally */
+        justify-content: center; /* Center-align the links */
+        gap: 1rem; /* Space between links */
+      }
+
+      nav a {
+        color: white; /* Link text color */
+        text-decoration: none; /* No underline */
+        padding: 0.5rem 1rem; /* Padding around links */
+      }
+
+      nav a:hover {
+        background: #01579b; /* Darker background on hover */
+        border-radius: 5px; /* Rounded corners on hover */
+      }
+
+      /* ======= Main Container ======= */
+      .container {
+        padding: 2rem; /* Padding inside container */
+        max-width: 800px; /* Max width of content */
+        margin: auto; /* Center container horizontally */
+        background: white; /* White background inside form */
+        margin-top: 1rem; /* Space from top */
+      }
+
+      /* Utility class to hide elements */
+      .hidden {
+        display: none;
+      }
+
+      /* ======= Form Styles ======= */
+      form {
+        display: flex;
+        flex-direction: column; /* Stack elements vertically */
+        gap: 1rem; /* Space between form elements */
+      }
+
+      input, select, textarea {
+        padding: 10px;
+        width: 100%; /* Full width input fields */
+      }
+
+      /* ======= Button Styles ======= */
+      button {
+        padding: 10px;
+        background: #0288d1; /* Blue background */
+        color: white; /* White text */
+        border: none; /* No border */
+        cursor: pointer; /* Hand cursor on hover */
+        width: 100%;
+      }
+
+      button:hover {
+        background: #0277bd; /* Slightly darker on hover */
+      }
+
+      /* ======= Complaint Card Styles (possibly used elsewhere) ======= */
+      .complaint-card {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+      }
+
+      .complaint-card img {
+        width: 100%;
+        border-radius: 5px;
+        margin-top: 0.5rem;
+      }
+
+      .story img {
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      /* ======= Error Message Style ======= */
+      .error-msg {
+        color: red;
+        margin-top: -12px;
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+
+      /* ======= Label Style ======= */
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      /* ======= Input and Select Styles ======= */
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      select {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 16px;
+        box-sizing: border-box;
+      }
+
+      .fields {
+        margin-bottom: 15px;
+      }
+
+      /* ======= Focus Outline Style ======= */
+      input:focus,
+      select:focus {
+        border-color: #2a7a3b; /* Green border on focus */
+        outline: none;
+      } 
+
+      /* ======= Highlight active nav link ======= */
+      a.active {
+        background-color: grey;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ======= Header Section ======= -->
+    <header>
+      <h1>Drainage System Revitalization Portal</h1>
+    </header>
+  
+    <!-- ======= Navigation Menu ======= -->
+    <nav>
+      <a href="home.html">Home</a>
+      <!-- <a href="registercitizen.html">Register</a> -->
+      <!-- <a href="report.html">Report</a> -->
+      <a href="stories.html">Stories</a>
+      <a href="policy.html">Policy</a>
+      <a href="contact.html">Contact</a>
+      <a href="sanitationteam.php">Sanitation</a>
+    </nav>
+
+    <!-- ======= Login Form Section ======= -->
+    <div class="container">
+      <!-- Email field -->
+      <div class="username-sec fields">
+        <label for="email">Email Address</label>
+        <input type="email" id="username" name="username" placeholder="example@mail.com" />
+        <span class="error-msg" id="username_error"></span>
+      </div>
+
+      <!-- Password field -->
+      <div class="password-sec fields">
+        <label for="password">Password***</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" />
+        <span class="error-msg" id="password_error"></span></br>
+      </div>  
+
+      <!-- Login Button -->
+      <button type="button" id="login-form-submit">Login</button>
+    </div>
+
+    <!-- ======= jQuery Library (used for form validation and AJAX) ======= -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- ======= JavaScript Logic ======= -->
+    <script>
+      jQuery(document).ready(function() {
+        // Get the query parameter from URL (?person=citizen)
+        function getQueryParam(param) {
+          let urlParams = new URLSearchParams(window.location.search);
+          return urlParams.get(param);
+        }
+
+        // Submits the form via AJAX
+        function loginformsubmission() {
+          let valid = true;
+          let personValue = getQueryParam('person'); // citizen / gvmcemp / sanitationemp
+          let username = jQuery('#username').val();
+          let password = jQuery('#password').val();
+
+          if(valid) {
+            if(username != '' && password != '') {
+              jQuery.ajax({
+                url: "http://localhost/csp/csp/loginformvalidation.php", // Backend PHP handler
+                type: "post",
+                data: {
+                  username: username,
+                  password: password,
+                  personValue: personValue,
+                },
+                success: function (response) {
+                  console.log(response);
+                  if(response == "success") {
+                    // Redirect user to respective page based on role
+                    if(personValue == 'citizen') {
+                      window.location.href = "report.html";
+                    } else if(personValue == 'gvmcemp') {
+                      window.location.href = "status.php";
+                    } else {
+                      window.location.href = "status.php";
+                    }
+                  } else {
+                    alert('Please check your login details else register!');
+                  }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                  console.log(textStatus, errorThrown);
+                }
+              });
+            }
+          }
+        }
+
+        // Validates input fields and shows error messages
+        function validatefields() {
+          let username = jQuery('#username').val();
+          let password = jQuery('#password').val();
+
+          if(username == '' && password == '') {
+            jQuery('.error-msg').text('Please fill all the fields');
+          } else if(username == '' && password != '') {
+            jQuery('#username_error').text('Please fill the username');
+            jQuery('#password_error').text('');
+          } else if(username != '' && password == '') {
+            jQuery('#username_error').text('');
+            jQuery('#password_error').text('Please fill the password');
+          } else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(username)) {
+            // Checks for valid email format
+            jQuery('#username_error').text('Please fill the username correctly');
+            jQuery('#password_error').text('');
+          } else {
+            // Clears all errors
+            jQuery('#username_error').text('');
+            jQuery('#password_error').text('');
+          }
+        }
+
+        // When login button is clicked
+        jQuery(document).on('click', '#login-form-submit', function() {
+          validatefields(); // First validate
+          loginformsubmission(); // Then submit if valid
+        });
+
+        // Real-time validation on typing
+        jQuery(document).on('input', '.fields input', function() {
+          validatefields();
+        });
+      });
+    </script>
+  </body>
+</html>

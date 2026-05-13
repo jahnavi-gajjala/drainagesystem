@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!-- Declares the document type as HTML5 -->
+<html lang="en">
+  <head>
+    <!-- Sets the character encoding for the document -->
+    <meta charset="UTF-8" />
+    
+    <!-- Ensures proper rendering and touch zooming on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- Title of the web page shown in the browser tab -->
+    <title>Register - MedLink</title>
+
+    <!-- Start of internal CSS styling -->
+    <style>
+      /* ========== Global Reset ========== */
+      /* Applies box-sizing to all elements for consistent spacing */
+      * {
+        box-sizing: border-box;
+      }
+
+      /* Sets default styles for the body */
+      body {
+        font-family: Arial, sans-serif; /* Uses Arial font */
+        margin: 0;                      /* Removes default margin */
+        background: #f4f4f4;            /* Light gray background */
+      }
+
+      /* ========== Header ========== */
+      /* Styles the header section */
+      header {
+        background: #0288d1;            /* Blue background */
+        color: white;                  /* White text */
+        padding: 1rem;                 /* Padding around text */
+        text-align: center;           /* Centers the text */
+      }
+
+      /* ========== Navigation Bar ========== */
+      /* Styles the navigation bar */
+      nav {
+        background: #0277bd;          /* Darker blue background */
+        padding: 0.5rem;              /* Padding around nav items */
+        display: flex;                /* Use flexbox for layout */
+        justify-content: center;     /* Center the nav items */
+        gap: 1rem;                    /* Space between items */
+      }
+
+      /* Styles for navigation links */
+      nav a {
+        color: white;                 /* White text */
+        text-decoration: none;       /* Removes underline */
+        padding: 0.5rem 1rem;        /* Padding around the text */
+      }
+
+      /* On hover, changes background and adds border radius */
+      nav a:hover {
+        background: #01579b;         /* Darker background */
+        border-radius: 5px;          /* Rounded corners */
+      }
+
+      /* ========== Container ========== */
+      /* Styles the main content container */
+      .container {
+        padding: 2rem;                /* Internal spacing */
+        max-width: 800px;            /* Limits width */
+        margin: auto;                /* Center align */
+        background: white;           /* White background */
+        margin-top: 1rem;            /* Space from top */
+      }
+
+      /* ========== Forms ========== */
+      /* Style for forms */
+      form {
+        display: flex;               /* Flexbox for layout */
+        flex-direction: column;     /* Stack items vertically */
+        gap: 1rem;                   /* Space between elements */
+      }
+
+      /* Style for input fields, dropdowns, and textareas */
+      input,
+      select,
+      textarea {
+        padding: 10px;              /* Inner spacing */
+        width: 100%;                /* Full width of container */
+      }
+
+      /* ========== Button Styles ========== */
+      /* Style for buttons */
+      button {
+        padding: 10px;              /* Inner spacing */
+        background: #0288d1;        /* Blue background */
+        color: white;               /* White text */
+        border: none;               /* Removes border */
+        cursor: pointer;            /* Pointer on hover */
+        width: 100%;                /* Full width */
+      }
+
+      /* Changes background on hover for button */
+      button:hover {
+        background: #0277bd;
+      }
+
+      /* ========== Complaint Card Styles ========== */
+      .complaint-card {
+        border: 1px solid #ccc;       /* Light gray border */
+        padding: 1rem;                /* Space inside */
+        margin-bottom: 1.5rem;        /* Space below */
+        border-radius: 10px;          /* Rounded corners */
+        background-color: #f9f9f9;    /* Light background */
+      }
+
+      /* Style for images inside complaint card */
+      .complaint-card img {
+        width: 100%;                  /* Full width */
+        border-radius: 5px;           /* Rounded corners */
+        margin-top: 0.5rem;           /* Space on top */
+      }
+
+      /* Style for images in story section */
+      .story img {
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      /* Style for active navigation link */
+      a.active {
+        background-color: grey;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <!-- ========== Header Section ========== -->
+    <header>
+      <h1>Drainage System Revitalization Portal</h1>
+    </header>
+  
+    <!-- ========== Navigation Bar ========== -->
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="stories.html">Stories</a>
+      <a href="policy.html">Policy</a>
+      <a href="contact.html" class="active">Contact</a> <!-- Active page highlighted -->
+      <a href="sanitationteam.php">Sanitation</a>
+    </nav>
+
+    <!-- ========== Contact Section ========== -->
+    <div class="container hidden" id="contact">
+      <h2>Contact</h2>
+      <p>Email: commissioner_gvmc@yahoo.co.in<br>Phone: 180042500009</p>
+    </div>
+
+  </body>
+</html>

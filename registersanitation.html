@@ -1,0 +1,279 @@
+<!DOCTYPE html> <!-- Tells browser this is an HTML5 document -->
+<html lang="en"> <!-- Sets language as English -->
+  <head>
+    <!-- Meta tags for character encoding and responsive design -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Register - MedLink</title> <!-- Title of the page -->
+
+    <style>
+      /* ======= GLOBAL STYLES ======= */
+      * { box-sizing: border-box; } /* Ensures padding/margin doesn't affect element width/height */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f4f4f4;
+      }
+
+      /* ======= HEADER STYLES ======= */
+      header {
+        background: #0288d1;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      /* ======= NAVIGATION BAR ======= */
+      nav {
+        background: #0277bd;
+        padding: 0.5rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+      nav a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+      }
+      nav a:hover {
+        background: #01579b;
+        border-radius: 5px;
+      }
+
+      /* ======= MAIN CONTAINER ======= */
+      .container {
+        padding: 2rem;
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        margin-top: 1rem;
+      }
+
+      .hidden { display: none; } /* For hiding content when needed */
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      input, select, textarea {
+        padding: 10px;
+        width: 100%;
+      }
+
+      /* ======= BUTTON STYLE ======= */
+      button {
+        padding: 10px;
+        background: #0288d1;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+      }
+      button:hover {
+        background: #0277bd;
+      }
+
+      /* ======= COMPLAINT CARD STYLES (used elsewhere) ======= */
+      .complaint-card {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+      }
+      .complaint-card img {
+        width: 100%;
+        border-radius: 5px;
+        margin-top: 0.5rem;
+      }
+
+      .story img {
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      /* ======= ERROR MESSAGES ======= */
+      .error-msg {
+        color: red;
+        margin-top: -12px;
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+
+      /* ======= LABEL AND FIELD STYLES ======= */
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      select {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 16px;
+        margin-bottom: 18px;
+        box-sizing: border-box;
+      }
+
+      input:focus,
+      select:focus {
+        border-color: #2a7a3b;
+        outline: none;
+      }
+
+      a.active {
+        background-color: grey;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ======= PAGE HEADER ======= -->
+    <header>
+      <h1>Drainage System Revitalization Portal</h1>
+    </header>
+
+    <!-- ======= NAVIGATION LINKS ======= -->
+    <nav>
+      <a href="home.html">Home</a>
+      <!-- Other links commented out -->
+      <a href="stories.html">Stories</a>
+      <a href="policy.html">Policy</a>
+      <a href="contact.html">Contact</a>
+      <a href="sanitationteam.php">Sanitation</a>
+    </nav>
+
+    <!-- ======= MAIN FORM CONTAINER ======= -->
+    <div class="container">
+      <!-- Email input -->
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="example@mail.com" />
+      <span class="error-msg" id="email_error"></span>
+
+      <!-- Area input -->
+      <label for="area">Area</label>
+      <input type="text" id="area" name="area" placeholder="Enter your area" />
+      <span class="error-msg" id="area_error"></span><br>
+
+      <!-- Password input -->
+      <label for="area">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" /><br>
+      <span class="error-msg" id="password_error"></span><br>
+
+      <!-- Confirm password input -->
+      <label for="area">Confirm Password</label>
+      <input type="password" id="confirm_password" name="confirm_password" placeholder="Enter your confirm password" /><br>
+      <span class="error-msg" id="confirm_password_error"></span><br>
+
+      <!-- Submit button -->
+      <button type="button" onclick="SubmitForm()">Register</button>
+    </div>
+
+    <!-- ======= jQuery CDN LINK ======= -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- ======= FORM SCRIPT ======= -->
+    <script>
+      $(document).ready(function () {
+        // Clear email error on input
+        $('#email').on('input', function () {
+          $('#email_error').text('');
+        });
+
+        // Clear area error on input
+        $('#area').on('input', function () {
+          $('#area_error').text('');
+        });
+
+        // Clear password error on input
+        $('#password').on('input', function () {
+          $('#password_error').text('');
+        });
+
+        // Clear confirm password error on input
+        $('#confirm_password').on('input', function () {
+          $('#confirm_password_error').text('');
+        });
+      });
+
+      // ======= VALIDATION + AJAX SUBMISSION FUNCTION =======
+      function SubmitForm() {
+        let email = $('#email').val(); // Get email value
+        let area = $('#area').val();   // Get area value
+        let password = $('#password').val(); // Get password
+        let confirm_password = $('#confirm_password').val(); // Get confirm password
+        let valid = true; // Flag to track form validity
+
+        // ======= Email validation =======
+        if (email === '') {
+          $('#email_error').text(' Fill the field');
+          valid = false;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          $('#email_error').text(' Enter a valid email address');
+          valid = false;
+        } else {
+          $('#email_error').text('');
+        }
+
+        // ======= Area validation =======
+        if (area === '') {
+          $('#area_error').text(' Fill the field');
+          valid = false;
+        } else {
+          $('#area_error').text('');
+        }
+
+        // ======= Password validation =======
+        if (password === '') {
+          $('#password_error').text('Fill the field');
+          valid = false;
+        } else {
+          $('#password_error').text('');
+        }
+
+        // ======= Confirm password check =======
+        if (confirm_password === '') {
+          $('#confirm_password_error').text('Fill the field');
+          valid = false;
+        } else if (password != confirm_password) {
+          $('#confirm_password_error').text('Fill the password correctly');
+          valid = false;
+        } else {
+          $('#confirm_password_error').text('');
+        }
+
+        // ======= Final form submission =======
+        if (valid) {
+          jQuery.ajax({
+            url: "http://localhost/csp/csp/registersanitation.php", // Backend PHP file
+            type: "post", // HTTP method
+            data: {
+              email: email,
+              password: password,
+              area: area,
+            },
+            success: function (response) {
+              console.log(response); // Log response to console
+              if (response == "success") {
+                window.location.href = 'sanitationteam.php'; // Redirect on success
+              } else if (response == "fail") {
+                alert(' Your email address is already registered');
+                location.reload(); // Reload page
+              }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+              console.log(textStatus, errorThrown); // Log errors
+            }
+          });
+        }
+      }
+    </script>
+  </body>
+</html>

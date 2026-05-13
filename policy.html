@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Defines this document as HTML and sets the language to English -->
+  <head>
+    <meta charset="UTF-8" /> <!-- Character encoding: supports most characters -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Ensures responsive scaling on different devices -->
+    <title>Register - MedLink</title> <!-- Title shown in browser tab -->
+
+    <style>
+      /* ===== Global Reset for all elements ===== */
+      * {
+        box-sizing: border-box; /* Includes padding and border in element's width/height */
+      }
+
+      /* ===== Body Styling ===== */
+      body {
+        font-family: Arial, sans-serif; /* Sets the font style */
+        margin: 0; /* Removes default margin */
+        background: #f4f4f4; /* Light gray background color */
+      }
+
+      /* ===== Header Section ===== */
+      header {
+        background: #0288d1; /* Blue background color */
+        color: white; /* White text */
+        padding: 1rem; /* Spacing inside the header */
+        text-align: center; /* Center the header text */
+      }
+
+      /* ===== Navigation Bar ===== */
+      nav {
+        background: #0277bd; /* Slightly darker blue background */
+        padding: 0.5rem; /* Padding inside nav bar */
+        display: flex; /* Flexbox layout for horizontal alignment */
+        justify-content: center; /* Center the links inside nav */
+        gap: 1rem; /* Spacing between links */
+      }
+
+      nav a {
+        color: white; /* White link text */
+        text-decoration: none; /* No underline */
+        padding: 0.5rem 1rem; /* Padding around each link */
+      }
+
+      nav a:hover {
+        background: #01579b; /* Darker background on hover */
+        border-radius: 5px; /* Rounded corners on hover */
+      }
+
+      /* ===== Main Container Styling ===== */
+      .container {
+        padding: 2rem; /* Padding inside the box */
+        max-width: 800px; /* Maximum width of the container */
+        margin: auto; /* Center horizontally */
+        background: white; /* White background */
+        margin-top: 1rem; /* Space from top of page */
+      }
+
+      /* ===== Form Styling ===== */
+      form {
+        display: flex; /* Use flexbox */
+        flex-direction: column; /* Arrange items vertically */
+        gap: 1rem; /* Space between form elements */
+      }
+
+      input,
+      select,
+      textarea {
+        padding: 10px; /* Space inside form fields */
+        width: 100%; /* Make inputs full width */
+      }
+
+      /* ===== Button Styling ===== */
+      button {
+        padding: 10px; /* Button padding */
+        background: #0288d1; /* Blue background */
+        color: white; /* White text */
+        border: none; /* No border */
+        cursor: pointer; /* Cursor changes on hover */
+        width: 100%; /* Full-width button */
+      }
+
+      button:hover {
+        background: #0277bd; /* Slightly darker blue on hover */
+      }
+
+      /* ===== Complaint Card Box (used elsewhere) ===== */
+      .complaint-card {
+        border: 1px solid #ccc; /* Gray border */
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        border-radius: 10px; /* Rounded corners */
+        background-color: #f9f9f9; /* Light background */
+      }
+
+      .complaint-card img {
+        width: 100%; /* Full width image */
+        border-radius: 5px; /* Slight rounding */
+        margin-top: 0.5rem;
+      }
+
+      .story img {
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      /* ===== Error Message Styling ===== */
+      .error-msg {
+        color: red;
+        margin-top: -12px;
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+
+      /* ===== Label Styling ===== */
+      label {
+        display: block; /* Make each label its own line */
+        margin-bottom: 6px;
+        font-weight: bold;
+        color: #333; /* Dark text */
+      }
+
+      /* ===== Input Fields and Dropdown Styling ===== */
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      select {
+        width: 100%; /* Full width */
+        padding: 10px 12px;
+        font-size: 16px;
+        margin-bottom: 18px;
+        box-sizing: border-box; /* Include padding/border in width */
+      }
+
+      /* ===== Highlight Input on Focus ===== */
+      input:focus,
+      select:focus {
+        border-color: #2a7a3b; /* Green border when focused */
+        outline: none; /* Removes default outline */
+      }
+
+      /* ===== Active Link Styling in Navigation ===== */
+      a.active {
+        background-color: grey; /* Gray background for active page link */
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <!-- ===== Header with Page Title ===== -->
+    <header>
+      <h1>Drainage System Revitalization Portal</h1>
+    </header>
+
+    <!-- ===== Navigation Links ===== -->
+    <nav>
+      <a href="home.html">Home</a>
+      <!-- These are commented out: no visible links -->
+      <!-- <a href="registercitizen.html">Register</a>
+      <a href="report.html">Report</a> -->
+      <a href="stories.html">Stories</a>
+      <a href="policy.html" class="active">Policy</a> <!-- This page is currently active -->
+      <a href="contact.html">Contact</a>
+      <a href="sanitationteam.php">Sanitation</a>
+    </nav>
+
+    <!-- ===== Main Content Container, Hidden by Default ===== -->
+    <div class="container hidden" id="policy">
+      <h2>Policy</h2>
+      <p>This portal enhances public health through better drainage and sanitation.</p>
+    </div>
+
+  </body>
+</html>
