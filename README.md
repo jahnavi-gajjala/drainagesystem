@@ -1,53 +1,44 @@
-# Drainage System Revitalization Portal 🌊🚨
+# Drainage System Revitalization Portal 🌊
 
-The Drainage System Revitalization Portal is a web-based platform developed to help citizens report drainage and sanitation-related problems directly to the authorities for faster response and better city maintenance.
+A web-based complaint management platform for reporting drainage and sanitation issues and supporting an authority-side review workflow.
 
-The system allows users to submit complaints regarding blocked drains, water overflow, sanitation issues, and damaged drainage systems. Complaints are reviewed through the GVMC portal and forwarded to the sanitation department for action and resolution.
+## Overview
 
-## 🚀 Features
+The portal allows citizens to submit drainage-related complaints such as blocked drains, water overflow, and sanitation problems. Submitted issues can be reviewed through an authority-side workflow and tracked through the platform.
 
-* 📝 Online complaint submission system
-* 🌊 Report drainage blockage and overflow issues
-* 🏙️ GVMC complaint review and approval process
-* 🧹 Sanitation department action management
-* 📱 Responsive and user-friendly interface
-* 🔔 Alert and notification system
-* 📍 Location-based issue reporting
-* 📊 Complaint tracking functionality
+## Key Features
 
-## 🛠️ Technologies Used
+- Online complaint submission
+- Drainage blockage and overflow reporting
+- Authority-side complaint review
+- Complaint tracking
+- Responsive user interface
+- Location-related issue reporting
+- Alerts and notifications
 
-* HTML
-* CSS
-* Tailwind CSS
-* JavaScript
-* PHP
-* MySQL
+## Tech Stack
 
-## 📌 Project Objective
+- HTML
+- CSS
+- Tailwind CSS
+- JavaScript
+- PHP
+- MySQL
 
-The main goal of this project is to improve public sanitation management by creating a digital platform that enables citizens to easily report drainage issues and helps authorities respond more efficiently.
+## Project Focus
 
-## 🌟 Key Highlights
+The project demonstrates CRUD-style web development, form handling, database-backed complaint management, role-based workflow concepts, and responsive frontend development.
 
-* Encourages public participation in city cleanliness
-* Reduces delays in complaint handling
-* Improves communication between citizens and authorities
-* Promotes smarter urban sanitation management
+## Future Improvements
 
-## 🔥 Future Enhancements
+- Image attachments for complaints
+- GPS-based location capture
+- Dedicated admin dashboard
+- SMS and email notifications
+- AI-assisted issue prioritization
+- More detailed real-time complaint status
 
-* Real-time complaint status tracking
-* Image upload for complaints
-* GPS-based location detection
-* Admin dashboard for authorities
-* SMS and email notifications
-* AI-based issue prioritization
+## Contributors
 
-## 👩‍💻 Developed By
+Jahnavi Gajjala, Nanditha, Sravani, Charmi, and Harshitha
 
-**Jahnavi,Nanditha,Sravani,Charmi,Harshitha**
-
----
-
-⭐ If you like this project, give it a star on GitHub!
