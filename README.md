@@ -1,44 +1,53 @@
 # Drainage System Revitalization Portal 🌊
 
-A web-based complaint management platform for reporting drainage and sanitation issues and supporting an authority-side review workflow.
+A full-stack civic complaint-management portal for reporting drainage and sanitation issues, then moving each report through an authority-side review workflow.
 
-## Overview
+## Why this project
 
-The portal allows citizens to submit drainage-related complaints such as blocked drains, water overflow, and sanitation problems. Submitted issues can be reviewed through an authority-side workflow and tracked through the platform.
+Blocked drains and water overflow need a clear path from citizen report to action. This project models that workflow in a web application: a user submits an issue, the report is stored in MySQL, and an authority-facing workflow can review and track it.
 
-## Key Features
+## Features
 
-- Online complaint submission
-- Drainage blockage and overflow reporting
-- Authority-side complaint review
-- Complaint tracking
-- Responsive user interface
-- Location-related issue reporting
-- Alerts and notifications
+- Submit drainage, overflow, and sanitation complaints
+- Capture issue and location-related details
+- Store and retrieve complaint records through a database-backed flow
+- Track complaint progress
+- Authority-side review workflow
+- Responsive web interface
+- Alerts and notification-oriented user experience
 
-## Tech Stack
+## Tech stack
 
-- HTML
-- CSS
-- Tailwind CSS
-- JavaScript
-- PHP
-- MySQL
+| Layer | Technology |
+| --- | --- |
+| Frontend | HTML, CSS, Tailwind CSS, JavaScript |
+| Backend | PHP |
+| Database | MySQL |
+| Local development | XAMPP |
 
-## Project Focus
+## Local setup
 
-The project demonstrates CRUD-style web development, form handling, database-backed complaint management, role-based workflow concepts, and responsive frontend development.
+1. Install and start **XAMPP** (Apache and MySQL).
+2. Clone this repository into the XAMPP `htdocs` directory.
+3. Import the included SQL database file into MySQL/phpMyAdmin, if provided in the project.
+4. Update database credentials in the PHP configuration file if your local MySQL settings differ.
+5. Open the application through `http://localhost/<project-folder>`.
 
-## Future Improvements
+## Engineering concepts demonstrated
 
-- Image attachments for complaints
-- GPS-based location capture
-- Dedicated admin dashboard
-- SMS and email notifications
-- AI-assisted issue prioritization
-- More detailed real-time complaint status
+- CRUD-style complaint management
+- Form validation and server-side handling
+- Relational database integration
+- User and authority workflow separation
+- Responsive frontend development
 
-## Contributors
+## Roadmap
 
-Jahnavi Gajjala, Nanditha, Sravani, Charmi, and Harshitha
+- Add image attachments and GPS location capture
+- Build a dedicated analytics dashboard for authorities
+- Add email/SMS status notifications
+- Prioritize urgent reports with data-driven rules
 
+## Team
+
+Built by **Jahnavi Gajjala, Nanditha, Sravani, Charmi, and Harshitha**.
