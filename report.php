@@ -1,18 +1,7 @@
 <?php
 // Define database connection credentials
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "drainage_system";
-
-// Create connection to the MySQL database
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check if the connection failed
-if ($conn->connect_error) {
-  // Stop script and display error if connection fails
-  die("Connection failed: " . $conn->connect_error);
-}
+require __DIR__ . '/database.php';
+$conn = drainage_db();
 
 // Retrieve form data sent via POST method
 $issue = $_POST['issue'];              // The selected issue type (e.g., Drainage Problem)
@@ -63,7 +52,7 @@ if (isset($_FILES['photo']) && $_FILES['photo']['error'] === 0) {
 
 // SQL query to insert complaint data into database table 'complaints'
 // 'hold' is the default value for approval status
-$sql = "INSERT INTO complaints (issue, complaint_description, area, photo, approval)
+$sql = "INSERT INTO drainage_complaints (issue, complaint_description, area, photo, approval)
         VALUES (?, ?, ?, ?, 'hold')";
 
 // Prepare SQL statement to avoid SQL injection
